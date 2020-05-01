@@ -12,7 +12,7 @@ RUN apt-get install -yq \
         pkg-config \
         libssl-dev \
         libevent-dev \
-        libdb++-dev  \
+#        libdb++-dev  \
         libboost1.71-dev \
         software-properties-common \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
