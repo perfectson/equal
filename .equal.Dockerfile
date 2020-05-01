@@ -40,8 +40,14 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz \
  && tar -xvf boost_1_70_0.tar.gz \
  && cd boost_1_70_0 \
- && ./bootstrap.sh \
- && ./b2 install
+ && ./bootstrap.sh --prefix=/usr/local/ \
+ && ./b2 --help
+ && ./b2 -j8 variant=release link=shared threading=multi runtime-link=shared
+ && ./b2 -j8 install 
+
+# && ./bootstrap.sh -- help \
+# && ./bootstrap.sh \
+# && ./b2 install
 
 
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
