@@ -53,7 +53,8 @@ RUN git clone https://github.com/bitcoin/bitcoin.git \
  && cd bitcoin \
  && git checkout v0.19.1 \ 
  && ./autogen.sh \
- && ./configure CPPFLAGS="-I${BDB_PREFIX}/include/ -O2" LDFLAGS="-L${BDB_PREFIX}/lib/" \
+# && ./configure CPPFLAGS="-I${BDB_PREFIX}/include/ -O2" LDFLAGS="-L${BDB_PREFIX}/lib/" \
+ && ./configure BDB_CFLAGS="-I${BDB_PREFIX}/include/" BDB_LIBS="-L${BDB_PREFIX}/lib/ -ldb_cxx-4.8"
  && make \
  && make install
 
