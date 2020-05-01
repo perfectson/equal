@@ -49,7 +49,7 @@ RUN tar -xvf db-4.8.30.NC.tar.gz
 RUN cd db-4.8.30.NC/build_unix
 RUN mkdir -p build
 RUN BDB_PREFIX=$(pwd)/build
-RUN bash ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
+RUN ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
 RUN make install
 RUN cd ../
 RUN rm db-4.8.30.NC.tar.gz
