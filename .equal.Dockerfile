@@ -6,7 +6,7 @@ RUN apt-get install -yq \
         automake \
         pkg-config \
         libtool \
-        libssl-dev
+        libssl-dev \
         autotools-dev \
         libevent-dev \
         netcat \
