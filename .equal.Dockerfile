@@ -3,7 +3,7 @@ FROM gitpod/workspace-full
 
 USER root
 RUN apt-get install -yq \
-        build-essential
+        build-essential \
         libtool \
         autotools-dev \        
         netcat \
