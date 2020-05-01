@@ -51,12 +51,15 @@ RUN cd db-4.8.30.NC/build_unix \
  && BDB_PREFIX=$(pwd)/build \
  && ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX \
  && make install 
-#RUN mkdir -p build
-#RUN BDB_PREFIX=$(pwd)/build
-#RUN ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
-#RUN make install
-#RUN cd ../
 #RUN rm db-4.8.30.NC.tar.gz
+
+RUN git clone https://github.com/bitcoin/bitcoin.git \
+ && cd bitcoin \
+ && git checkout v0.19.1 \ 
+ && ./autogen.sh \
+ && ./configure CPPFLAGS="-I${BDB_PREFIX}/include/ -O2" LDFLAGS="-L${BDB_PREFIX}/lib/" \
+ && make \
+ && make install
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
