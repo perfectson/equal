@@ -2,7 +2,9 @@
 FROM gitpod/workspace-full
 
 USER root
-RUN apt-get install -yq \
+RUN apt-get update \
+    && apt-get upgrade \
+    && apt-get install -yq \
         automake \
         pkg-config \
         libtool \
