@@ -45,7 +45,7 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
 
-DOCKER_TMP=`mktemp -d` ; chmod 1777 $DOCKER_TMP ; DOCKER_GO="$DOCKER_TMP/go" ; alias ls > $DOCKER_GO ; echo "ls" >> $DOCKER_GO ; if [[ -t 0 ]] ; then DOCKER_TERM="-it" ; DOCKER_BASH="-ic" ; else DOCKER_TERM="-i -a stdin -a stdout -a stderr" ; DOCKER_BASH="-c" ; fi ; GID=`id -g` ; docker run -u $UID:$GID --cap-drop=ALL $DOCKER_TERM --rm --log-driver=none -v "$PWD:$PWD" -w "$PWD" -e "TERM=$TERM" -e "LANG=$LANG" -e "LS_COLORS=$LS_COLORS" -v /etc/passwd:/etc/passwd -v /etc/group:/etc/group -v $DOCKER_TMP:/tmp --entrypoint=/bin/bash ubuntu $DOCKER_BASH "source /tmp/go" ; rm -rf $DOCKER_TMP#RUN tar -xvf db-4.8.30.NC.tar.gz
+
 #RUN cd db-4.8.30.NC/build_unix
 #RUN mkdir -p build
 #RUN BDB_PREFIX=$(pwd)/build
@@ -53,7 +53,7 @@ DOCKER_TMP=`mktemp -d` ; chmod 1777 $DOCKER_TMP ; DOCKER_GO="$DOCKER_TMP/go" ; a
 #RUN make install
 #RUN cd ../
 #RUN rm db-4.8.30.NC.tar.gz
-RUN bash install_db4.sh -b
+RUN bash /home/gitpod/install_db4.sh -b
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
