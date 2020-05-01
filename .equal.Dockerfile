@@ -13,7 +13,7 @@ RUN apt-get install -yq \
         libssl-dev \
         libevent-dev \
 #        libdb++-dev  \
-        libboost1.71-dev \
+#        libboost1.71-dev \
         software-properties-common \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
         
@@ -37,6 +37,12 @@ SHELL ["/bin/bash", "--login", "-c"]
 # Install custom tools, runtime, etc. using apt-get
 # For example, the command below would install "bastet" - a command line tetris clone:
 #
+RUN wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz \
+ && tar -xvf boost_1_70_0.tar.gz \
+ && cd boost_1_70_0 \
+ && ./bootstrap.sh \
+ && ./b2 install
+
 
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
