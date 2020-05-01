@@ -12,7 +12,7 @@ RUN apt-get install -yq \
         pkg-config \
         libssl-dev \
         libevent-dev \
-#        libboost-all-dev \
+        libboost-all-dev \
         software-properties-common \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 #RUN add-apt-repository ppa:bitcoin/bitcoin \
