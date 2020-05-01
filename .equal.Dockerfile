@@ -41,8 +41,8 @@ RUN wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.
  && tar -xvf boost_1_70_0.tar.gz \
  && cd boost_1_70_0 \
  && ./bootstrap.sh --prefix=/usr/local/ \
- && ./b2 --help
- && ./b2 -j8 variant=release link=shared threading=multi runtime-link=shared
+ && ./b2 --help \
+ && ./b2 -j8 variant=release link=shared threading=multi runtime-link=shared \
  && ./b2 -j8 install 
 
 # && ./bootstrap.sh -- help \
