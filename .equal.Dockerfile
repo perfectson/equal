@@ -45,14 +45,14 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
 
-RUN tar -xvf db-4.8.30.NC.tar.gz
-RUN cd db-4.8.30.NC/build_unix
-RUN mkdir -p build
-RUN BDB_PREFIX=$(pwd)/build
-RUN ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
-RUN make install
-RUN cd ../
-RUN rm db-4.8.30.NC.tar.gz
+#RUN tar -xvf db-4.8.30.NC.tar.gz
+#RUN cd db-4.8.30.NC/build_unix
+#RUN mkdir -p build
+#RUN BDB_PREFIX=$(pwd)/build
+#RUN ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX
+#RUN make install
+#RUN cd ../
+#RUN rm db-4.8.30.NC.tar.gz
 
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
