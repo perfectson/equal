@@ -11,7 +11,7 @@ RUN apt-get install -yq \
         libevent-dev \
         netcat \
         bsdmainutils \
-        libboost-all-dev \
+#        libboost-all-dev \
         software-properties-common \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 RUN add-apt-repository ppa:bitcoin/bitcoin \
