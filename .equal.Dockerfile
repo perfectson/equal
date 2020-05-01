@@ -3,14 +3,15 @@ FROM gitpod/workspace-full
 
 USER root
 RUN apt-get install -yq \
-        automake \
-        pkg-config \
+        build-essential
         libtool \
-        libssl-dev \
-        autotools-dev \
-        libevent-dev \
+        autotools-dev \        
         netcat \
         bsdmainutils \
+        automake \
+        pkg-config \
+        libssl-dev \
+        libevent-dev \
 #        libboost-all-dev \
         software-properties-common \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
