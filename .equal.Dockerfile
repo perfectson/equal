@@ -14,11 +14,11 @@ RUN apt-get install -yq \
 #        libboost-all-dev \
         software-properties-common \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
-RUN add-apt-repository ppa:bitcoin/bitcoin \
-    && apt-get update \
-    && apt-get install libdb4.8-dev \
-        libdb4.8++-dev\
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+#RUN add-apt-repository ppa:bitcoin/bitcoin \
+#    && apt-get update \
+ #   && apt-get install libdb4.8-dev \
+  #      libdb4.8++-dev\
+   # && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
         
 RUN apt-get install libqt5gui5 \
         libqt5core5a \
