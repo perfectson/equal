@@ -3,7 +3,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-# Install libdb4.8 (Berkeley DB).
+# Install libdb4.8 (Berkeley DB)
 
 export LC_ALL=C
 set -e
