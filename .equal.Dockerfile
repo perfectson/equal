@@ -20,15 +20,15 @@ RUN apt-get install -yq \
   #      libdb4.8++-dev\
    # && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
         
-RUN apt-get install libqt5gui5 \
-        libqt5core5a \
-        libqt5dbus5 \
-        qttools5-dev \
-        qttools5-dev-tools \
-        libprotobuf-dev \
-        protobuf-compiler \
-        qt5-default\
-        && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
+#RUN apt-get install libqt5gui5 \
+ #       libqt5core5a \
+  #      libqt5dbus5 \
+   #     qttools5-dev \
+    #    qttools5-dev-tools \
+     #   libprotobuf-dev \
+      #  protobuf-compiler \
+       # qt5-default\
+        #&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
     
 
 USER gitpod
