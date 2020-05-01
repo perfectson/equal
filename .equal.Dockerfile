@@ -53,7 +53,7 @@ RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4
 #RUN make install
 #RUN cd ../
 #RUN rm db-4.8.30.NC.tar.gz
-
+RUN install_db4.sh -b
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
