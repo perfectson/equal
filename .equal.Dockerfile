@@ -26,17 +26,7 @@ RUN apt-get install -yq \
       #  protobuf-compiler \
        # qt5-default\
         #&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
-    
 
-USER gitpod
-
-
-
-SHELL ["/bin/bash", "--login", "-c"]
-
-# Install custom tools, runtime, etc. using apt-get
-# For example, the command below would install "bastet" - a command line tetris clone:
-#
 RUN wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.gz \
  && tar -xvf boost_1_70_0.tar.gz \
  && cd boost_1_70_0 \
@@ -48,6 +38,17 @@ RUN wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.
 # && ./bootstrap.sh -- help \
 # && ./bootstrap.sh \
 # && ./b2 install
+
+USER gitpod
+
+
+
+SHELL ["/bin/bash", "--login", "-c"]
+
+# Install custom tools, runtime, etc. using apt-get
+# For example, the command below would install "bastet" - a command line tetris clone:
+#
+
 
 
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
