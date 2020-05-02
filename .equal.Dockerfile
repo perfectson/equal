@@ -64,8 +64,8 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 RUN git clone https://github.com/bitcoin/bitcoin.git \
  && cd bitcoin \
- && ./contrib/install_db4.sh `pwd` \
  && git checkout v0.19.1 \ 
+ && ./contrib/install_db4.sh `pwd` \
  && ./autogen.sh \
 # && ./configure CPPFLAGS="-I${BDB_PREFIX}/include/ -O2" LDFLAGS="-L${BDB_PREFIX}/lib/" \
 # && ./configure BDB_CFLAGS="-I${BDB_PREFIX}/include/" BDB_LIBS="-L${BDB_PREFIX}/lib/ -ldb_cxx-4.8" \
