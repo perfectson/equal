@@ -38,19 +38,6 @@ RUN wget https://dl.bintray.com/boostorg/release/1.70.0/source/boost_1_70_0.tar.
 # && ./bootstrap.sh -- help \
 # && ./bootstrap.sh \
 # && ./b2 install
-
-USER gitpod
-
-
-
-SHELL ["/bin/bash", "--login", "-c"]
-
-# Install custom tools, runtime, etc. using apt-get
-# For example, the command below would install "bastet" - a command line tetris clone:
-#
-
-
-
 RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz#
 RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
 RUN tar -xvf db-4.8.30.NC.tar.gz
@@ -77,6 +64,20 @@ RUN git clone https://github.com/bitcoin/bitcoin.git \
 # && ./configure BDB_CFLAGS="-I${BDB_PREFIX}/include/" BDB_LIBS="-L${BDB_PREFIX}/lib/ -ldb_cxx-4.8" \
  && make \
  && make install
+ 
+USER gitpod
+
+
+
+SHELL ["/bin/bash", "--login", "-c"]
+
+# Install custom tools, runtime, etc. using apt-get
+# For example, the command below would install "bastet" - a command line tetris clone:
+#
+
+
+
+
 
 RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
 RUN bash Anaconda3-5.0.1-Linux-x86_64.sh -b
