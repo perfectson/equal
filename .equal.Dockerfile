@@ -51,25 +51,28 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 
 
-#RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz#
-#RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
-#RUN tar -xvf db-4.8.30.NC.tar.gz
-#RUN sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' db-4.8.30.NC/dbinc/atomic.h
-#RUN cd db-4.8.30.NC/build_unix \
-# && mkdir -p build \
- #&& BDB_PREFIX=$(pwd)/build \
-# && ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX \
-# && make install 
+RUN wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz#
+RUN echo '12edc0df75bf9abd7f82f821795bcee50f42cb2e5f76a6a281b85732798364ef  db-4.8.30.NC.tar.gz' | sha256sum -c
+RUN tar -xvf db-4.8.30.NC.tar.gz
+RUN sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' db-4.8.30.NC/dbinc/atomic.h
+RUN cd db-4.8.30.NC/build_unix \
+ && mkdir -p build \
+ && BDB_PREFIX=$(pwd)/build \
+ && ../dist/configure --disable-shared --enable-cxx --with-pic --prefix=$BDB_PREFIX \
+ && make install 
 #RUN rm db-4.8.30.NC.tar.gz
 
 RUN git clone https://github.com/bitcoin/bitcoin.git \
  && cd bitcoin \
  && git checkout v0.19.1 \ 
- && ./contrib/install_db4.sh `pwd` 
- 
-RUN cd bitcoin \
- && git checkout v0.19.1 \ 
+ && export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include" \
+ && export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib" \
+ && ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so   \
+ && ln -s /usr/local/BerkeleyDB.4.8/lib/libdb_cxx-4.8.so /usr/lib/libdb_cxx-4.8.so \
+ && ldconfig \
+ #&& ./contrib/install_db4.sh `pwd` 
  && ./autogen.sh \
+ && ./configure CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib"
 # && ./configure CPPFLAGS="-I${BDB_PREFIX}/include/ -O2" LDFLAGS="-L${BDB_PREFIX}/lib/" \
 # && ./configure BDB_CFLAGS="-I${BDB_PREFIX}/include/" BDB_LIBS="-L${BDB_PREFIX}/lib/ -ldb_cxx-4.8" \
  && make \
