@@ -52,11 +52,11 @@ RUN cd db-4.8.30.NC/build_unix \
 RUN git clone https://github.com/bitcoin/bitcoin.git \
  && cd bitcoin \
  && git checkout v0.19.1 \ 
- && export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include" \
- && export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib" \
- && ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so   \
- && ln -s /usr/local/BerkeleyDB.4.8/lib/libdb_cxx-4.8.so /usr/lib/libdb_cxx-4.8.so \
- && ldconfig \
+ #&& export BDB_INCLUDE_PATH="/usr/local/BerkeleyDB.4.8/include" \
+ #&& export BDB_LIB_PATH="/usr/local/BerkeleyDB.4.8/lib" \
+ #&& ln -s /usr/local/BerkeleyDB.4.8/lib/libdb-4.8.so /usr/lib/libdb-4.8.so   \
+ #&& ln -s /usr/local/BerkeleyDB.4.8/lib/libdb_cxx-4.8.so /usr/lib/libdb_cxx-4.8.so \
+ #&& ldconfig \
  #&& ./contrib/install_db4.sh `pwd` 
  && ./autogen.sh \
  && ./configure --disable-wallet \
